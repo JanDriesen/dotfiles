@@ -6,11 +6,10 @@ set -eu
 echo "Setting prefererred macOS settings. Please enter your password!"
 sudo -v
 
-# close "System Preferences.App" to prevent from overriding settings
-osascript -e 'tell application "System Preferences" to quit'
-
-#########################################
-# Terminal								#
-#########################################
-# enable secure keyboard entry in terminal.app
-defaults write com.apple.terminal SecureKeyboardEntry -bool true
+# execute scripts in macOS_settings/
+source ./macOS_settings/dock.sh
+source ./macOS_settings/finder.sh
+source ./macOS_settings/system_preferences.sh
+source ./macOS_settings/terminal.sh
+source ./macOS_settings/appstore.sh
+source ./macOS_settings/apps_misc.sh
