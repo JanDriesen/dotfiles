@@ -9,39 +9,6 @@ sudo -v
 # close "System Preferences.App" to prevent from overriding settings
 osascript -e 'tell application "System Preferences" to quit'
 
-#################################################
-# macOS 										#
-#################################################
-# Use expanded save panel as default
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
-
-# disable annoying smart dashes
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
-
-# set disk as default save target, not iCloud
-# defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
-
-# decrease key repeat delay and increase repeate rate
-defaults write NSGlobalDomain InitialKeyRepeat -int 15
-defaults write NSGlobalDomain KeyRepeat -int 2
-
-# disable auto correction
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-
-# avoid creating .DS_Store on network volumes or USB volumes
-defaults write com.apple.desktopservices NSDontWriteNetworkStores -bool true
-defaults write com.apple.desktopservices NSDontWriteUSBStores -bool true
-
-# use dark mode
-defaults write NSGlobalDomain AppleInterfaceStyle Dark
-
-# show battery status in percentage
-defaults write com.apple.menuextra.battery ShowPercent -string "YES"
-
-# set the display scaling to "more space" (1900x1200)
-# TODO
-
 #############################################
 # Activity Monitor							#
 #############################################
@@ -64,15 +31,7 @@ defaults write com.apple.ActivityMonitor SortDirection - int 0
 # enable secure keyboard entry in terminal.app
 defaults write com.apple.terminal SecureKeyboardEntry -bool true
 
-#############################################
-# Time Machine								#
-#############################################
 
-# prevent time machine from prompting to use new hard drives as backup volume
-defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
-
-# disable local time machine backups
-hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 #############################################
 # Mac App Store								#
