@@ -1,0 +1,22 @@
+[user]
+	name = Jan Driesen
+	email = jndriesen.develop@gmail.com
+[alias]
+	setg = config --global
+	co = checkout
+	cob = checkout -b
+	mer = merge --no-ff
+	mkb = branch
+	mvb = branch -m
+	rmb = branch -D
+[core]
+	excludesfile = /Users/jan/.gitignore_global
+	editor = mcedit
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/jan/.stCommitMsg

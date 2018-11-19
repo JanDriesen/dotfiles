@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 set -eu
+
+echo "Setting up the dock..."
 #
 # Installation script to setup the Dock and the Desktop
 # close "System Preferences.app" to prevent it from overriding settings
@@ -10,16 +12,18 @@ osascript -e 'tell application "System Preferences" to quit'
 # -----------------
 # set the desktop background image
 # TODO: add variable for the background image path
-osascript <<'APPLESCRIPT'
-  tell application "System Events"
-    set desktopCount to count of desktops
-    repeat with desktopNumber from 1 to desktopCount
-      tell desktop desktopNumber
-        set picture to "/Library/Desktop Pictures/Solid Colors/Solid Gray Pro Ultra Dark.png"
-      end tell
-    end repeat
-  end tell
-APPLESCRIPT
+#osascript <<'APPLESCRIPT'
+#  tell application "System Events"
+#    set desktopCount to count of desktops
+#    repeat with desktopNumber from 1 to desktopCount
+#      tell desktop desktopNumber
+#        set picture to "/Library/Desktop Pictures/Solid Colors/Solid Gray Pro Ultra Dark.png"
+#      end tell
+#    end repeat
+#  end tell
+#APPLESCRIPT
+
+# TODO: add most recent used disabling
 
 #
 # Dock
@@ -28,7 +32,7 @@ APPLESCRIPT
 # dockutil requires dockutil https://github.com/kcrawford/dockutil.git. should be installed with brew
 if [ -x "$(command -v dockutil)" ]; then
   dockutil --no-restart --remove all
-  dockutil --no-restart --add "/Applications/System Preferences.app" --section others --position 0
+  dockutil --no-restart --add "/Applications/System Preferences.app" --section apps --position 0
   # show downloads as grid view and display a folder icon
   dockutil --no-restart --add "$HOME/Downloads" --view grid --display folder
 else
