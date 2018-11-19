@@ -9,5 +9,6 @@ echo "Symlinking files..."
 
 # Symlink dotfiles
 ln -sf "$DIR/.gitconfig" "$HOME/.gitconfig"
+ln -sf "$DIR/.gitignore_global" "$HOME/.gitignore_global"
 
 echo "done symlinking"
