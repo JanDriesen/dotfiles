@@ -11,6 +11,7 @@
 	rmb = branch -D
 [core]
 	excludesfile = /Users/jan/.gitignore_global
+	editor = mcedit
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
