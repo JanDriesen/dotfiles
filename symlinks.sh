@@ -12,3 +12,6 @@ ln -sf "$DIR/.gitconfig" "$HOME/.gitconfig"
 ln -sf "$DIR/.gitignore_global" "$HOME/.gitignore_global"
 
 echo "done symlinking"
+
+
+# docker run --name nginx -d -p 8080:80 -v /Users/jandriesen/tempfolder:/usr/share/nginx/html nginx
