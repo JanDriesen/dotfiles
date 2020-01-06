@@ -8,7 +8,11 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "Symlinking files..."
 
 # Symlink dotfiles
+ln -sf "$DIR/.zshrc" "$HOME/.zshrc"
 ln -sf "$DIR/.gitconfig" "$HOME/.gitconfig"
 ln -sf "$DIR/.gitignore_global" "$HOME/.gitignore_global"
+
+# Symlink the App Settings
+# todo: ln -s "$DIR/AppSettings/Terminal/" "$HOME/Library/Preferences/com.apple.Terminal.plist"
 
 echo "done symlinking"
