@@ -9,6 +9,7 @@
 	mkb = branch
 	mvb = branch -m
 	rmb = branch -D
+	com = commit -m
 [core]
 	excludesfile = /Users/jan/.gitignore_global
 	editor = mcedit
