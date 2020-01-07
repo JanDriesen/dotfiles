@@ -7,7 +7,7 @@ sudo -v
 
 # install brew 
 # check if brew is available. install if not
-if ! [ -x $(command -v brew) ]; then
+if [ ! -x $(command -v brew) ]; then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else echo "brew is already installed"
 fi
@@ -37,7 +37,7 @@ if [ -e "/usr/local/bin/zsh" ]; then
     chsh -s "/usr/local/bin/zsh"
 
     # install oh-my-zsh
-    if ![ -r "$HOME/.oh-my-zsh"]; then
+    if [ ! -e "$HOME/.oh-my-zsh" ]; then
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     else echo "oh my zsh is already installed!"
     fi
