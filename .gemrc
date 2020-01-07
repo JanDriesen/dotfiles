@@ -1,0 +1,2 @@
+# install gems without documentation to save time
+gem: --no-document
