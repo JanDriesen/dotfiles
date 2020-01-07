@@ -146,7 +146,8 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0
 
 # sort activity monitor results by cpu usage
 defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
-defaults write com.apple.ActivityMonitor SortDirection - int 0
+# TODO: unexpected argument int, leaving defaults unchanged!
+#defaults write com.apple.ActivityMonitor SortDirection - int 0
 
 #############################################
 # AppStore  								#
@@ -171,7 +172,7 @@ defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
 defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 
 # automatically download apps purchased on other macs
-defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
+#defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
 
 # turn on auto update
 defaults write com.apple.commerce AutoUpdate -bool true
@@ -200,5 +201,6 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 # prevent time machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
-# disable local time machine backups
-hash tmutil &> /dev/null && sudo tmutil disablelocal
+# disable local time machine backups 
+# TODO: disablelocal: unrecognized verb.!
+#hash tmutil &> /dev/null && sudo tmutil disablelocal
