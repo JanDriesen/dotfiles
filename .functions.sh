@@ -15,3 +15,18 @@
 #func cdDeviceDir() {
 #	// todo
 #}
+
+# function to clean the derived xcode data
+# func cleanXcode() {
+# rm -rf ~/Library/Developer/Xcode/DerivedData
+#}
+
+# funcion to enable concurrent build tasks in Xcode. New with Xcode 9.2.
+# could slow down the system because more memory is used
+# func enableParralelBuild() {
+# defaults write com.apple.dt.Xcode BuildSystemScheduleInherentlyParallelCommandsExclusively -bool NO
+#}
+
+# func disableParralelBuild() {
+# defaults delete com.apple.dt.Xcode BuildSystemScheduleInherentlyParallelCommandsExclusively
+#}
