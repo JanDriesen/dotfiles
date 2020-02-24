@@ -192,6 +192,13 @@ defaults write com.apple.commerce AutoUpdate -bool true
 defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
 
 ###############################################################################
+# Xcode									      #
+##############################################################################
+
+# Measure compile time
+defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool true
+
+###############################################################################
 # iTunes                                                                      #
 ###############################################################################
 
