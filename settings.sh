@@ -27,6 +27,17 @@ defaults write NSGlobalDomain KeyRepeat -int 2
 # use dark mode
 defaults write NSGlobalDomain AppleInterfaceStyle Dark
 
+# set accent color to yellow
+# nil blue
+# -1 graphite
+# 0 red
+# 1 orange
+# 2 yellow
+# 3 green
+# 5 purple
+# 6 pink
+defaults write -globalDomain "AccentColor" -int 2
+
 # disable auto correction
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
