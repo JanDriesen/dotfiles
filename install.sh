@@ -18,6 +18,11 @@ brew tap homebrew/bundle
 brew bundle
 brew cleanup
 
+#install java jdk 8
+brew tap AdoptOpenJDK/openjdk
+brew cask install adoptopenjdk8
+brew cleanup
+
 # Install ruby via rbenv and use it globally
 if [[ $(rbenv global) != "2.6.5" ]]; then
     rbenv install 2.6.5
@@ -25,7 +30,7 @@ if [[ $(rbenv global) != "2.6.5" ]]; then
 fi
 
 # Install various gems
-~/.rbenv/shims/gem install cocoapods fastlane --no-document
+~/.rbenv/shims/gem install cocoapods fastlane xcodeproj --no-document
 ~/.rbenv/shims/gem cleanup
 
 # check if zsh has been installed and set it as default shell, also install oh-my-zsh
