@@ -88,8 +88,8 @@ export PATH="/usr/local/sbin:$PATH"
 export GOPATH="$HOME/go"
 
 # Java
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-13.0.2.jdk/Contents/Home)"
-export PATH="$PATH:$JAVA_HOME/bin"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-13.0.2.jdk/Contents/Home"
+export PATH="$JAVA_HOME/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # Preferred editor for local and remote sessions
