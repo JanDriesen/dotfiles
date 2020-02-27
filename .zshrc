@@ -92,6 +92,9 @@ export JAVA_HOME=$(/usr/libexec/java_home -d 64 -v 1.8)
 launchctl setenv JAVA_HOME "$JAVA_HOME"
 export PATH="$JAVA_HOME/bin:$PATH"
 
+# Android
+export ANDROID_HOME="/usr/local/share/android-sdk"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # Preferred editor for local and remote sessions
