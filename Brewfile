@@ -1,6 +1,7 @@
 # cli tools
 brew 'coreutils'
 brew 'dockutil'
+brew 'ffmpeg'
 brew 'git'
 brew 'git-lfs'
 brew 'go'
