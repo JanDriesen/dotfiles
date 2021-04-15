@@ -93,7 +93,12 @@ launchctl setenv JAVA_HOME "$JAVA_HOME"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 # Android
-export ANDROID_HOME="/usr/local/share/android-sdk"
+export ANDROID_HOME="/Users/$USER/Library/Android/sdk"
+
+export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+
+# SAP-Kapsel 
+export KAPSEL_HOME="$HOME/Projects/SAP_Mobile_Platform_SDK/P3/KAPSEL_SDK_3.2"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -122,3 +127,9 @@ export ANDROID_HOME="/usr/local/share/android-sdk"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+###-tns-completion-start-###
+if [ -f /Users/jan/.tnsrc ]; then 
+    source /Users/jan/.tnsrc 
+fi
+###-tns-completion-end-###

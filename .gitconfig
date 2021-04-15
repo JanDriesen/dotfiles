@@ -10,6 +10,7 @@
 	mvb = branch -m
 	rmb = branch -D
 	com = commit -m
+	cm = com
 	logg = log --graph
 [core]
 	excludesfile = /Users/jan/.gitignore_global
