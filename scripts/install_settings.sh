@@ -2,6 +2,10 @@
 
 set -eu
 
+# get the path of the repo's Assets, needed for the wallpaper asset
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ASSETS_DIR="$( cd "$SCRIPT_DIR/../Assets" && pwd )"
+
 # ask for the sudo password upfront
 echo "Setting prefererred macOS settings. Please enter your password!"
 sudo -v
@@ -36,7 +40,7 @@ defaults write NSGlobalDomain AppleInterfaceStyle Dark
 # 3 green
 # 5 purple
 # 6 pink
-defaults write -globalDomain "AccentColor" -int 2
+defaults write -globalDomain "AccentColor" -int 5
 
 # disable auto correction
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
@@ -96,7 +100,11 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 ###############################################################################
 
 # Set the desktop background image
-osascript -e 'tell application "System Events" to set picture of every desktop to "'"$(pwd)/Assets/wallpaper.jpg"'"'
+read -p "Set desktop wallpaper from Assets/wallpaper.jpg? [y/N] " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    osascript -e 'tell application "System Events" to set picture of every desktop to "'"$ASSETS_DIR/wallpaper.jpg"'"'
+fi
 
 # disable dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true
@@ -219,6 +227,18 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 # prevent time machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
-# disable local time machine backups 
+# disable local time machine backups
 # TODO: disablelocal: unrecognized verb.!
 #hash tmutil &> /dev/null && sudo tmutil disablelocal
+
+###############################################################################
+# Reboot                                                                      #
+###############################################################################
+
+# some settings (e.g. key repeat rate) only take full effect after a reboot
+echo "A reboot is required for all settings to take effect (e.g. key strokes should feel noticeably faster)."
+read -p "Reboot now? [y/N] " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    sudo reboot
+fi

@@ -5,7 +5,7 @@
 # export PATH=$PATH:/usr/local/mysql/bin
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/jan/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -84,22 +84,6 @@ eval "$(rbenv init -)"
 # Homebrew
 export PATH="/usr/local/sbin:$PATH"
 
-# Go
-export GOPATH="$HOME/go"
-
-# Java
-export JAVA_HOME=$(/usr/libexec/java_home -d 64 -v 1.8)
-launchctl setenv JAVA_HOME "$JAVA_HOME"
-export PATH="$JAVA_HOME/bin:$PATH"
-
-# Android
-export ANDROID_HOME="/Users/$USER/Library/Android/sdk"
-
-export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
-
-# SAP-Kapsel 
-export KAPSEL_HOME="$HOME/Projects/SAP_Mobile_Platform_SDK/P3/KAPSEL_SDK_3.2"
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # Preferred editor for local and remote sessions
@@ -129,7 +113,29 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ###-tns-completion-start-###
-if [ -f /Users/jan/.tnsrc ]; then 
-    source /Users/jan/.tnsrc 
+if [ -f "$HOME/.tnsrc" ]; then
+    source "$HOME/.tnsrc"
 fi
 ###-tns-completion-end-###
+
+# bun completions
+[ -s "/Users/jdriesen/.bun/_bun" ] && source "/Users/jdriesen/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Toggle macOS system sleep on/off (wraps `pmset -a disablesleep`), for
+# quickly switching between "stay awake" (long builds/downloads/transfers)
+# and normal power behavior, without retyping the sudo command each time.
+nosleep-toggle() {
+  local current
+  current=$(pmset -g | awk '/^ SleepDisabled/ {print $2}')
+  if [[ "$current" == "1" ]]; then
+    sudo pmset -a disablesleep 0
+    echo "Sleep re-enabled (normal power behavior)."
+  else
+    sudo pmset -a disablesleep 1
+    echo "Sleep disabled (system will not sleep)."
+  fi
+}

@@ -5,23 +5,8 @@ set -eu
 echo "Setting up the system! Please enter your password!"
 sudo -v
 
-# install brew 
-# check if brew is available. install if not
-if [ ! -x $(command -v brew) ]; then
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-else echo "brew is already installed"
-fi
-
-# install cli tools and gui apps with with brew bundle
-brew update
-brew tap homebrew/bundle
-brew bundle
-brew cleanup
-
-#install java jdk 8
-brew tap AdoptOpenJDK/openjdk
-brew cask install adoptopenjdk8
-brew cleanup
+# Install Homebrew and packages
+source scripts/brew/install_brew.sh
 
 # Install ruby via rbenv and use it globally
 if [[ $(rbenv global) != "2.6.5" ]]; then
@@ -33,15 +18,8 @@ fi
 ~/.rbenv/shims/gem install cocoapods fastlane xcodeproj --no-document
 ~/.rbenv/shims/gem cleanup
 
-# check if zsh has been installed and set it as default shell, also install oh-my-zsh
-if [ -e "/usr/local/bin/zsh" ]; then
-    # add zsh to approved shells
-    echo "/usr/local/bin/zsh" | sudo tee -a /etc/shells
-
-    # change shell for current user
-    chsh -s "/usr/local/bin/zsh"
-
-    # install oh-my-zsh
+# install oh-my-zsh
+if [ -e "/bin/zsh" ]; then
     if [ ! -e "$HOME/.oh-my-zsh" ]; then
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     else echo "oh my zsh is already installed!"
@@ -50,14 +28,14 @@ else echo "Zsh is not installed. Failed to install oh-my-zsh!"
 fi
 
 # Create and update symlinks
-source symlinks.sh
+source scripts/install_symlinks.sh
 
 # Apply macOS and settings for some apps
-source settings.sh
+source scripts/install_settings.sh
 
-# set macOS environment
-#source ./macos-settings.sh
 echo "TODO: Set the display scaling to \"more space\""
 echo "TODO: Download Apps from the AppStore: Magnet, HazeOver, Xcode, etc"
+echo "TODO: Start Docker Desktop manually once (no account needed, just skip/close the sign-in prompt)"
+echo "TODO: To enable the Kubernetes cluster: Docker Desktop > Settings (gear icon) > Kubernetes tab > check \"Enable Kubernetes\" > Apply & Restart"
 
 echo "Done."

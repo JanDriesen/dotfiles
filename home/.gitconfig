@@ -13,13 +13,11 @@
 	cm = com
 	logg = log --graph
 [core]
-	excludesfile = /Users/jan/.gitignore_global
 	editor = mcedit
+	excludesfile = /Users/jdriesen/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-[commit]
-	template = /Users/jan/.stCommitMsg
